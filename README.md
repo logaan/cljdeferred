@@ -5,13 +5,13 @@
 
 ## Install
 
-{% highlight clojure %}
+``` clojure
 [cljdeferred "0.1.0-SNAPSHOT"]
-{% endhighlight %}
+```
 
 ## Usage
 
-{% highlight clojure %}
+``` clojure
 (ns cljdeferred.jdeferred-test
   (:require [cljdeferred :as cd]
             [cljdeferred.jdeferred :refer :all]))
@@ -23,7 +23,7 @@
      printed  (cd/then named #(reset! result %))]
   (cd/resolve deferred {:name "logaan"})
   @result) ; => "logaan"
-{% endhighlight %}
+```
 
 ## License
 
