@@ -17,17 +17,17 @@
             [cljdeferred.jdeferred :refer :all]))
 
 (let [result   (atom nil)
-     deferred (deferred)
-     promise  (cd/promise deferred)
-     named    (cd/then promise :name)
-     printed  (cd/then named #(reset! result %))]
+      deferred (deferred)
+      promise  (cd/promise deferred)
+      named    (cd/then promise :name)
+      printed  (cd/then named #(reset! result %))]
   (cd/resolve deferred {:name "logaan"})
   @result) ; => "logaan"
 ```
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Logan Campbell
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
