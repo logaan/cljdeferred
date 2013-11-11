@@ -1,6 +1,12 @@
-(ns cljdeferred.core)
+(ns cljdeferred.core
+  (:refer-clojure :exclude [resolve promise]))
 
-(defn foo
-  "I don't do a whole lot."
-  [x]
-  (println x "Hello, World!"))
+(defprotocol PromiseAPlus
+  (then [promise on-fulfilled]
+        [promise on-fulfilled on-rejected]))
+
+(defprotocol Deferred
+  (resolve [deferred value])
+  (reject [deferred reason])
+  (promise [deferred]))
+
