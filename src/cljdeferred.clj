@@ -1,4 +1,4 @@
-(ns cljdeferred.core
+(ns cljdeferred
   (:refer-clojure :exclude [resolve promise]))
 
 (defprotocol PromiseAPlus

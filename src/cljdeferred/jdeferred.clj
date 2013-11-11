@@ -1,5 +1,5 @@
 (ns cljdeferred.jdeferred
-  (:require [cljdeferred.core :as c])
+  (:require [cljdeferred :as cd])
   (:import [org.jdeferred.impl
             DeferredObject]
            [org.jdeferred
@@ -10,7 +10,7 @@
   (DeferredObject.))
 
 (extend-type org.jdeferred.Deferred
-  c/PromiseAPlus
+  cd/PromiseAPlus
   (then
     ([promise on-fulfilled]
      (.then promise (reify DoneFilter
@@ -20,9 +20,9 @@
      (.fail promise (reify FailCallback
                       (onFail [this reason]
                         (on-rejected reason)))) 
-     (c/then promise on-fulfilled)))
+     (cd/then promise on-fulfilled)))
 
-  c/Deferred
+  cd/Deferred
   (resolve [deferred value]
     (.resolve deferred value))
   (reject [deferred reason]
